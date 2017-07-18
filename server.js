@@ -72,16 +72,8 @@ app.get('/', function(req, res) {
 // //Sync Database
 models.sequelize.sync().then(function() {
  
-    console.log('Nice! Database looks fine')
- 
-}).catch(function(err) {
- 
-    console.log(err, "Something went wrong with the Database Update!")
- 
-});
+    console.log('Nice! Database looks fine');
 
- 
- //connect to server
 app.listen(PORT, function(err) {
  
     if (!err)
@@ -89,4 +81,14 @@ app.listen(PORT, function(err) {
     else console.log(err)
  
 });
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!");
+ 
+});
+
+ 
+ //connect to server
+
 
