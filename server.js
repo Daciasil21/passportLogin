@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 //==========================================================================
 //Sync Database
 
-models.sequelize.sync({ force: true }).then(function() {
+models.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
