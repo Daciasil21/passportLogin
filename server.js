@@ -8,6 +8,7 @@ var bodyParser = require('body-parser')
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars')
 var mysql = require('mysql');
+var PORT = process.env.PORT || 8080;
 // var connection;
 //=============================================================================
 //For BodyParser
@@ -67,22 +68,10 @@ app.get('/', function(req, res) {
 // module.exports = connection;
 //==========================================================================
 //Sync Database
-models.sequelize.sync().then(function() {
- 
-    console.log('Nice! Database looks fine')
- 
-}).catch(function(err) {
- 
-    console.log(err, "Something went wrong with the Database Update!")
- 
+
+models.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
 
- 
- //connect to server
-app.listen(process.env.PORT || 5000, function(err) {
- 
-    if (!err)
-        console.log("Site is live");
-    else console.log(err)
- 
-});
