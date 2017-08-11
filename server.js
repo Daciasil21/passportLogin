@@ -84,10 +84,11 @@ models.sequelize.sync().then(function() {
  //connect to server
 app.listen(PORT, function(err) {
  
-    if (!err)
+    if (!err){
         console.log("Site is live");
     	console.log(process.env.JAWSDB_URL);
-    else console.log(err)
- 
+    	}
+    else {console.log(err)
+ 	}
 });
 
